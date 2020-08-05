@@ -1,15 +1,20 @@
-Codecov Scala Example
-=====================
+# [Codecov](https://codecov.io) Scala Example
 
-| [https://codecov.io][1] | [@codecov][2] | [hello@codecov.io][3] |
-| ----------------------- | ------------- | --------------------- |
+## Guide
 
-This repository serves as an **example** on how to use [Codecov Global][4] for Scala.
+### Travis Setup
 
-## Usage
+Add to your `.travis.yml` file.
+```yml
+language: java
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+```
 
+> All other CI you can simply run `bash <(curl -s https://codecov.io/bash)`.
 
-### Add Jacoco plugin
+### Produce Coverage Reports
+#### Add Jacoco plugin
 ```xml
 <plugin>
   <groupId>org.jacoco</groupId>
@@ -32,34 +37,11 @@ This repository serves as an **example** on how to use [Codecov Global][4] for S
 </plugin>
 ```
 
-# Travis CI
+## Caveats
+### Private Repo
+Repository tokens are required for (a) all private repos, (b) public repos not using Travis-CI, CircleCI or AppVeyor. Find your repository token at Codecov and provide via appending `-t <your upload token>` to you where you upload reports.
 
-Add to your `.travis.yml` file.
-```yml
-language: java
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-```
-
-> All other CI you can simply run `bash <(curl -s https://codecov.io/bash)`.
-
-## Private Repos
-
-Add to your `.travis.yml` file.
-```yml
-env:
-  global:
-    - CODECOV_TOKEN=:uuid-repo-token
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-```
-
-View source and learn more about [Codecov Global Uploader][4]
-
-We are happy to help if you have any questions. Please contact email our Support at [support@codecov.io](mailto:support@codecov.io)
-
-[1]: https://codecov.io/
-[2]: https://twitter.com/codecov
-[3]: mailto:hello@codecov.io
-[4]: https://github.com/codecov/codecov-bash
+## Links
+- [Community Boards](https://community.codecov.io)
+- [Support](https://codecov.io/support)
+- [Documentation](https://docs.codecov.io)
